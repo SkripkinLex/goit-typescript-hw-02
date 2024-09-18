@@ -1,0 +1,36 @@
+import Modal from "react-modal";
+import { CloseModal } from "../../App";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+  overlay: { backgroundColor: "rgba(0,0,0,0.6)" },
+};
+
+Modal.setAppElement("#root");
+
+type Props = {
+  modalIsOpen: boolean;
+  closeModal: CloseModal;
+  src: string;
+  alt: string;
+};
+
+export const ImageModal = ({ modalIsOpen, closeModal, src, alt }: Props) => {
+  return (
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="Example Modal"
+    >
+      <img src={src} alt={alt} />
+    </Modal>
+  );
+};
